@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "diabetes"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4e2b6c53-e846-412c-885a-e45ff036087c"
+  }
+}

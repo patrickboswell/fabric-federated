@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Jenny Fabric Competition BI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "869c95c0-e133-4f00-8a27-e560475f9acc"
+  }
+}

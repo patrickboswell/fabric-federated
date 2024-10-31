@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "nprqi_demo"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9ed67598-c0ac-407f-88df-0227a8f7a51f"
+  }
+}

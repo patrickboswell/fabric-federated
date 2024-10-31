@@ -1,0 +1,1018 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "items": {
+            "value": "@pipeline().parameters.cw_items_j4t",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "LakehouseTableSource",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "table": {
+                        "value": "@item().source.table",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "synthea",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "1634bc81-9d9d-4494-b31a-5cf7e626fedd",
+                          "workspaceId": "86f20abc-c578-4508-9f8e-2e506a77a7dd",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "LakehouseTableSink",
+                  "tableActionOption": "OverwriteSchema",
+                  "partitionOption": "None",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "table": {
+                        "value": "@item().destination.table",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "Lakehouse",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "4b4622b8-c3c2-495f-b20d-0a37071fcc1d",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "value": "@item().copyActivity.translator",
+                  "type": "Expression"
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Copy_j4t",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "ForEach_j4t",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "cw_items_j4t": {
+        "type": "Array",
+        "defaultValue": [
+          {
+            "source": {
+              "table": "kidney_disease"
+            },
+            "destination": {
+              "table": "kidney_disease"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "ENCOUNTER_ID",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "ENCOUNTER_ID",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "ED_FLAG",
+                      "type": "Boolean",
+                      "physicalType": "boolean"
+                    },
+                    "sink": {
+                      "name": "ED_FLAG",
+                      "physicalType": "boolean"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "LOS",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "LOS",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "START",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "START",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "STOP",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "STOP",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TOTAL_CLAIM_COST",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "TOTAL_CLAIM_COST",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PATIENT_ID",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PATIENT_ID",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "AGE",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 23
+                    },
+                    "sink": {
+                      "name": "AGE",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 23
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "INCOME_CAT",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "INCOME_CAT",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "FATAL_ENCOUNTER",
+                      "type": "Boolean",
+                      "physicalType": "boolean"
+                    },
+                    "sink": {
+                      "name": "FATAL_ENCOUNTER",
+                      "physicalType": "boolean"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "DIABETES_FLAG",
+                      "type": "Boolean",
+                      "physicalType": "boolean"
+                    },
+                    "sink": {
+                      "name": "DIABETES_FLAG",
+                      "physicalType": "boolean"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "GFR_MIN",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "GFR_MIN",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "GFR_MAX",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "GFR_MAX",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "AL_CR_MIN",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "AL_CR_MIN",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "AL_CR_MAX",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "AL_CR_MAX",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "ORGANIZATION_NAME",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "ORGANIZATION_NAME",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PROVIDER_NAME",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PROVIDER_NAME",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PROVIDER_SPECIALITY",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PROVIDER_SPECIALITY",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PAYER_NAME",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PAYER_NAME",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "lung_cancer"
+            },
+            "destination": {
+              "table": "lung_cancer"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "ENCOUNTER_ID",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "ENCOUNTER_ID",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "ED_FLAG",
+                      "type": "Boolean",
+                      "physicalType": "boolean"
+                    },
+                    "sink": {
+                      "name": "ED_FLAG",
+                      "physicalType": "boolean"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "LOS",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "LOS",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "START",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "START",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "STOP",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "STOP",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TOTAL_CLAIM_COST",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "TOTAL_CLAIM_COST",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PATIENT_ID",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PATIENT_ID",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "AGE",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 23
+                    },
+                    "sink": {
+                      "name": "AGE",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 23
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "INCOME_CAT",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "INCOME_CAT",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "FATAL_ENCOUNTER",
+                      "type": "Boolean",
+                      "physicalType": "boolean"
+                    },
+                    "sink": {
+                      "name": "FATAL_ENCOUNTER",
+                      "physicalType": "boolean"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "CT_FLAG",
+                      "type": "Boolean",
+                      "physicalType": "boolean"
+                    },
+                    "sink": {
+                      "name": "CT_FLAG",
+                      "physicalType": "boolean"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "CHEMOTHERAPY_FLAG",
+                      "type": "Boolean",
+                      "physicalType": "boolean"
+                    },
+                    "sink": {
+                      "name": "CHEMOTHERAPY_FLAG",
+                      "physicalType": "boolean"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TERMINAL_CARE_PLAN_FLAG",
+                      "type": "Boolean",
+                      "physicalType": "boolean"
+                    },
+                    "sink": {
+                      "name": "TERMINAL_CARE_PLAN_FLAG",
+                      "physicalType": "boolean"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "ORGANIZATION_NAME",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "ORGANIZATION_NAME",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PROVIDER_NAME",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PROVIDER_NAME",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PROVIDER_SPECIALITY",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PROVIDER_SPECIALITY",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PAYER_NAME",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PAYER_NAME",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "stroke_claims_transactions"
+            },
+            "destination": {
+              "table": "stroke_claims_transactions"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "ENCOUNTER_ID",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "ENCOUNTER_ID",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "ED_FLAG",
+                      "type": "Boolean",
+                      "physicalType": "boolean"
+                    },
+                    "sink": {
+                      "name": "ED_FLAG",
+                      "physicalType": "boolean"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "LOS",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "LOS",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "START",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "START",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "STOP",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "STOP",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TOTAL_CLAIM_COST",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "TOTAL_CLAIM_COST",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PATIENT_ID",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PATIENT_ID",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "AGE",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 23
+                    },
+                    "sink": {
+                      "name": "AGE",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 23
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "INCOME_CAT",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "INCOME_CAT",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TRANSACTION_ID",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "TRANSACTION_ID",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TRANSACTION_TYPE",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "TRANSACTION_TYPE",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "CLAIMID",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "CLAIMID",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "CHARGEID",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "CHARGEID",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TYPE",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "TYPE",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "AMOUNT",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "AMOUNT",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "METHOD",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "METHOD",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "FROMDATE",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "FROMDATE",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TODATE",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "TODATE",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PROCEDURECODE",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PROCEDURECODE",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "MODIFIER1",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "MODIFIER1",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "MODIFIER2",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "MODIFIER2",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "DIAGNOSISREF1",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "DIAGNOSISREF1",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "DIAGNOSISREF2",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "DIAGNOSISREF2",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "DIAGNOSISREF3",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "DIAGNOSISREF3",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "DIAGNOSISREF4",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "DIAGNOSISREF4",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "UNITS",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "UNITS",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "DEPARTMENTID",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "DEPARTMENTID",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "NOTES",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "NOTES",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "UNITAMOUNT",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "UNITAMOUNT",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TRANSFEROUTID",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "TRANSFEROUTID",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TRANSFERTYPE",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "TRANSFERTYPE",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PAYMENTS",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "PAYMENTS",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "ADJUSTMENTS",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "ADJUSTMENTS",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "TRANSFERS",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "TRANSFERS",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "OUTSTANDING",
+                      "type": "Single",
+                      "physicalType": "float"
+                    },
+                    "sink": {
+                      "name": "OUTSTANDING",
+                      "physicalType": "float"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "ORGANIZATION_NAME",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "ORGANIZATION_NAME",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PATIENT_INSURANCE",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PATIENT_INSURANCE",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PROVIDER_NAME",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PROVIDER_NAME",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "PROVIDER_SPECIALITY",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "PROVIDER_SPECIALITY",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "SUPERVISING_PROVIDER_NAME",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "SUPERVISING_PROVIDER_NAME",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "SUPERVISING_PROVIDER_SPECIALITY",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "SUPERVISING_PROVIDER_SPECIALITY",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Get_NPRQI_Homebrew_Project_Data"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ee955ff8-8844-497e-9d8b-c8df2db1fc86"
+  }
+}

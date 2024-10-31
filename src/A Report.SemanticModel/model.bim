@@ -1,0 +1,1466 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"synthe_gold_data kidney_disease\",\"synthe_gold_data lung_cancer\",\"synthe_gold_data stroke_claims_transactions\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.136.1202.0 (24.09)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"CalcGroup\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "synthe_gold_data kidney_disease",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ENCOUNTER_ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "179f4b22-a678-414c-8b63-d9e97b848544",
+            "sourceColumn": "ENCOUNTER_ID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ED_FLAG",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "f2860bc1-dbfe-47fa-a73c-59a62d42f812",
+            "sourceColumn": "ED_FLAG",
+            "sourceProviderType": "bit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LOS",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "64763059-9ed0-478a-acc1-91e7ad595d89",
+            "sourceColumn": "LOS",
+            "sourceProviderType": "int",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "START",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "f3ded685-4b88-40ed-90da-430bf9cb1997",
+            "sourceColumn": "START",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "STOP",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "d168bc9d-fc7b-48ba-a87d-64bc8df766e7",
+            "sourceColumn": "STOP",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TOTAL_CLAIM_COST",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1af2cff6-1f18-4db8-9fa6-2c297636d780",
+            "sourceColumn": "TOTAL_CLAIM_COST",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PATIENT_ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "203bb40e-142d-4d52-a132-cf98268586a8",
+            "sourceColumn": "PATIENT_ID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AGE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "934c20b6-7051-446c-8240-0280c4a49bcc",
+            "sourceColumn": "AGE",
+            "sourceProviderType": "decimal(23, 0)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "INCOME_CAT",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fbe83a4c-61c6-418f-987f-f1b983fa293d",
+            "sourceColumn": "INCOME_CAT",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FATAL_ENCOUNTER",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "f753c13d-f5dc-48f2-9077-900404540edf",
+            "sourceColumn": "FATAL_ENCOUNTER",
+            "sourceProviderType": "bit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DIABETES_FLAG",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "86ff3256-f5eb-4d12-abd3-9162c559359e",
+            "sourceColumn": "DIABETES_FLAG",
+            "sourceProviderType": "bit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GFR_MIN",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "860604fa-2004-4de2-9f9d-295c6dee8fea",
+            "sourceColumn": "GFR_MIN",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "GFR_MAX",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "981db92f-260b-4942-b626-d05597f26ec6",
+            "sourceColumn": "GFR_MAX",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "AL_CR_MIN",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "066ffc22-9110-45ed-a4cc-0f779d8e4f25",
+            "sourceColumn": "AL_CR_MIN",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "AL_CR_MAX",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "83cd2e13-1c46-4fd4-8e8a-addde7614783",
+            "sourceColumn": "AL_CR_MAX",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ORGANIZATION_NAME",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2d6f6107-77c8-4437-a7f6-18245be2b040",
+            "sourceColumn": "ORGANIZATION_NAME",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PROVIDER_NAME",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a3a34073-a3bf-4230-bf61-8d8599eb209e",
+            "sourceColumn": "PROVIDER_NAME",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PROVIDER_SPECIALITY",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c9e12200-c352-4de2-9442-c50d1f90ced2",
+            "sourceColumn": "PROVIDER_SPECIALITY",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PAYER_NAME",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "26579f25-0ebc-428b-8e42-32f01df4339f",
+            "sourceColumn": "PAYER_NAME",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "6351ac0f-a191-4125-bcdc-062f5199aa76",
+        "partitions": [
+          {
+            "name": "synthe_gold_data kidney_disease",
+            "mode": "directQuery",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"uxrnomoyxvhedhuxx2uzr2674e-3bms75yvsdue3ovrk47pa56jie.datawarehouse.fabric.microsoft.com\", \"Warehouse\"),",
+                "    synthe_gold_data_kidney_disease = Source{[Schema=\"synthe_gold_data\",Item=\"kidney_disease\"]}[Data]",
+                "in",
+                "    synthe_gold_data_kidney_disease"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "synthe_gold_data lung_cancer",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ENCOUNTER_ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "552324ef-49c4-457b-879e-b5eec4eddc34",
+            "sourceColumn": "ENCOUNTER_ID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ED_FLAG",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "85bbd370-b926-4f25-8904-79ba75ef92a8",
+            "sourceColumn": "ED_FLAG",
+            "sourceProviderType": "bit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LOS",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "dda93fec-32e4-4b06-8b56-26fda40684ba",
+            "sourceColumn": "LOS",
+            "sourceProviderType": "int",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "START",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "097e1aa1-7caf-4de5-80b8-be368882cacb",
+            "sourceColumn": "START",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "STOP",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "e154f194-a4a1-46a6-a203-d68ba3e3c6ce",
+            "sourceColumn": "STOP",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TOTAL_CLAIM_COST",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4d71faa7-2d96-43df-8c52-6507a9002d18",
+            "sourceColumn": "TOTAL_CLAIM_COST",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PATIENT_ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f1cf1c98-4dd1-4ef1-84d1-29f8ab906801",
+            "sourceColumn": "PATIENT_ID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AGE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "8ac9bca4-94d2-43da-aaf5-50214dd814ef",
+            "sourceColumn": "AGE",
+            "sourceProviderType": "decimal(23, 0)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Income",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1b278348-5fd6-495d-a1e7-0b1cd1bf5d9f",
+            "sourceColumn": "Income",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FATAL_ENCOUNTER",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "bfe5cd0d-02fe-4982-a584-af277e67a469",
+            "sourceColumn": "FATAL_ENCOUNTER",
+            "sourceProviderType": "bit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CT_FLAG",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "a129ac49-da9c-4bad-a505-773503a4d552",
+            "sourceColumn": "CT_FLAG",
+            "sourceProviderType": "bit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CHEMOTHERAPY_FLAG",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "34d616b1-7fad-4dc4-b4bd-3149779ad1d7",
+            "sourceColumn": "CHEMOTHERAPY_FLAG",
+            "sourceProviderType": "bit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TERMINAL_CARE_PLAN_FLAG",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "bd32d7d1-cd0d-44c7-a864-4d713345d7f0",
+            "sourceColumn": "TERMINAL_CARE_PLAN_FLAG",
+            "sourceProviderType": "bit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ORGANIZATION_NAME",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "31018a4e-da46-444a-be9e-c463d04697df",
+            "sourceColumn": "ORGANIZATION_NAME",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Provider",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "da17bd25-ff11-4343-8929-0d6ebceb72c5",
+            "sourceColumn": "Provider",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PROVIDER_SPECIALITY",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7a0a6dd2-e4f7-43b1-9995-88c3fcd00821",
+            "sourceColumn": "PROVIDER_SPECIALITY",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PAYER_NAME",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "31f822bd-aabb-420f-a185-765fbf45c785",
+            "sourceColumn": "PAYER_NAME",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Procedure Duration",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "",
+              "var dayNo=INT([Duration Seconds]/86400)",
+              "var hourNo=INT(MOD([Duration Seconds],86400)/3600)",
+              "var minuteNO=MOD(MOD([Duration Seconds],86400)/60,60)",
+              "var secondNo=MOD([Duration Seconds], 60)",
+              "return",
+              "dayNo&\" day(s) \"&hourNo&\" hrs \"&minuteNO&\" min \"&secondNo&\" sec \""
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "5d5e00a8-897a-4a52-9242-79de40d0b790",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Procedure Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "expression": "DATEVALUE('synthe_gold_data lung_cancer'[START])",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "lineageTag": "7c6779f1-9138-4521-941f-a6dcf28a1b4f",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Duration Seconds",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": [
+              "",
+              "DATEDIFF ( [START], [STOP], SECOND )"
+            ],
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "e02e138c-0f84-4917-bf63-0f02ba51dcd4",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "24042766-deab-473a-92e5-5f04e5f5ccee",
+        "measures": [
+          {
+            "name": "Procedure Duration Seconds for Fatal Encounters",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isCustom\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "expression": "CALCULATE(AVERAGE('synthe_gold_data lung_cancer'[Duration Seconds]), ALL('synthe_gold_data lung_cancer'[FATAL_ENCOUNTER]))",
+            "extendedProperties": [
+              {
+                "name": "MeasureTemplate",
+                "type": "json",
+                "value": {
+                  "daxTemplateName": "NLtoDAX",
+                  "version": 0
+                }
+              }
+            ],
+            "formatString": "General Number",
+            "lineageTag": "29bcfaa3-4efb-4970-9b0a-c3483fb1b049"
+          },
+          {
+            "name": "Avg Procedure Duration",
+            "expression": [
+              "",
+              "var dayNo=INT([Procedure Duration Seconds for Fatal Encounters]/86400)",
+              "var hourNo=INT(MOD([Procedure Duration Seconds for Fatal Encounters],86400)/3600)",
+              "var minuteNO=INT(MOD(MOD([Procedure Duration Seconds for Fatal Encounters],86400)/60,60))",
+              "var secondNo=INT(MOD([Procedure Duration Seconds for Fatal Encounters], 60))",
+              "return",
+              "dayNo&\" day(s) \"&hourNo&\" hr \"&minuteNO&\" min \"&secondNo&\" sec \""
+            ],
+            "lineageTag": "c884ad57-c98c-48fb-aa03-849c7cdb60e2"
+          },
+          {
+            "name": "Encounters",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isCustom\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "expression": "AVERAGEX(KEEPFILTERS(VALUES('synthe_gold_data lung_cancer'[Provider])), CALCULATE(DISTINCTCOUNT('synthe_gold_data lung_cancer'[ENCOUNTER_ID])))",
+            "extendedProperties": [
+              {
+                "name": "MeasureTemplate",
+                "type": "json",
+                "value": {
+                  "daxTemplateName": "NLtoDAX",
+                  "version": 0
+                }
+              }
+            ],
+            "formatString": "General Number",
+            "lineageTag": "7c2458e1-4b08-4a87-8bfc-b6fd63b067a1"
+          },
+          {
+            "name": "Patient Count",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isCustom\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "expression": "AVERAGEX(KEEPFILTERS(VALUES('synthe_gold_data lung_cancer'[Income])), CALCULATE(DISTINCTCOUNT('synthe_gold_data lung_cancer'[PATIENT_ID])))",
+            "extendedProperties": [
+              {
+                "name": "MeasureTemplate",
+                "type": "json",
+                "value": {
+                  "daxTemplateName": "NLtoDAX",
+                  "version": 0
+                }
+              }
+            ],
+            "formatString": "General Number",
+            "lineageTag": "515c9361-b131-4962-91ff-73f0225d7a19"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "synthe_gold_data lung_cancer",
+            "mode": "directQuery",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"uxrnomoyxvhedhuxx2uzr2674e-3bms75yvsdue3ovrk47pa56jie.datawarehouse.fabric.microsoft.com\", \"Warehouse\"),",
+                "    synthe_gold_data_lung_cancer = Source{[Schema=\"synthe_gold_data\",Item=\"lung_cancer\"]}[Data],",
+                "    #\"Renamed Columns\" = Table.RenameColumns(synthe_gold_data_lung_cancer,{{\"PROVIDER_NAME\", \"Provider\"}, {\"INCOME_CAT\", \"Income\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "synthe_gold_data stroke_claims_transactions",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ENCOUNTER_ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2e87e552-3627-47bb-82ad-a1de1ccda049",
+            "sourceColumn": "ENCOUNTER_ID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ED_FLAG",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "d8b421bf-2df9-45cc-b6dd-317ef2dd5b3c",
+            "sourceColumn": "ED_FLAG",
+            "sourceProviderType": "bit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LOS",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "b3f6de2d-70ef-487a-bf95-1c717f7a5d3a",
+            "sourceColumn": "LOS",
+            "sourceProviderType": "int",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "START",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "7314a23f-68a5-48eb-bfdd-d992f0b49d72",
+            "sourceColumn": "START",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "STOP",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "bd430067-de12-4774-b2f3-f369131e49d7",
+            "sourceColumn": "STOP",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TOTAL_CLAIM_COST",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2e244949-f354-426b-9f92-f40176dbb71e",
+            "sourceColumn": "TOTAL_CLAIM_COST",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PATIENT_ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "88d9766c-4a92-4356-a9df-19fca64b92dc",
+            "sourceColumn": "PATIENT_ID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AGE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "83780e9c-6b54-4d9f-a20a-4e1e3e67bd90",
+            "sourceColumn": "AGE",
+            "sourceProviderType": "decimal(23, 0)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "INCOME_CAT",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "be536520-7c65-40bd-a81d-60b028ce65f5",
+            "sourceColumn": "INCOME_CAT",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TRANSACTION_ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "37e0664a-e819-4b02-91ff-72c11c9c9196",
+            "sourceColumn": "TRANSACTION_ID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TRANSACTION_TYPE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "796b66aa-7ea6-4b44-8204-0ffa5c1fb478",
+            "sourceColumn": "TRANSACTION_TYPE",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CLAIMID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3377e93a-ca86-4def-8d27-bdb783d523c2",
+            "sourceColumn": "CLAIMID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CHARGEID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "b96bab84-7485-4206-9998-83474060c486",
+            "sourceColumn": "CHARGEID",
+            "sourceProviderType": "real",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "TYPE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dcbe8607-c679-4cb2-b76b-c68af1bab15d",
+            "sourceColumn": "TYPE",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AMOUNT",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "33963e70-9bd4-4a4c-812b-3b4b843669b3",
+            "sourceColumn": "AMOUNT",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "METHOD",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f7aaec61-47fa-4761-8f12-ea8c42aace0d",
+            "sourceColumn": "METHOD",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FROMDATE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "37150c51-6dc7-4c09-93c4-12c3106c5928",
+            "sourceColumn": "FROMDATE",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TODATE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "daf993d1-8192-4930-8862-0c89393eefc7",
+            "sourceColumn": "TODATE",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PROCEDURECODE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d0873f1b-6120-4fe8-a645-d8d860a964a0",
+            "sourceColumn": "PROCEDURECODE",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MODIFIER1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "95ec1147-cace-4c1b-a430-2bd47f937b43",
+            "sourceColumn": "MODIFIER1",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MODIFIER2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1cc97d94-5af7-43a5-b740-160ef7bc3b58",
+            "sourceColumn": "MODIFIER2",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DIAGNOSISREF1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "57f0e144-d842-4453-824c-feb0f69d4f12",
+            "sourceColumn": "DIAGNOSISREF1",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DIAGNOSISREF2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "e07d630f-ff7c-4a68-bf73-d5316fa0be3e",
+            "sourceColumn": "DIAGNOSISREF2",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DIAGNOSISREF3",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "5a1447d2-46b5-4b5e-91bc-c774a32b29cc",
+            "sourceColumn": "DIAGNOSISREF3",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DIAGNOSISREF4",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "846567f0-c6bf-4e07-8c22-38441a2ef9d7",
+            "sourceColumn": "DIAGNOSISREF4",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "UNITS",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "fbbf5d0b-6bbe-4c78-bd50-dd7d1da72391",
+            "sourceColumn": "UNITS",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DEPARTMENTID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "4dcd894d-e5df-4c6c-947d-490a8db6061b",
+            "sourceColumn": "DEPARTMENTID",
+            "sourceProviderType": "real",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "NOTES",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ecfd8645-eeb7-4086-8a42-a7e4e359ac4f",
+            "sourceColumn": "NOTES",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "UNITAMOUNT",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "76dafb81-1328-4279-b84d-be17b7c685fe",
+            "sourceColumn": "UNITAMOUNT",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "TRANSFEROUTID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "64ea77ca-ade4-4162-a86d-c781ae307330",
+            "sourceColumn": "TRANSFEROUTID",
+            "sourceProviderType": "real",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "TRANSFERTYPE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ae35ddc1-1fa5-4438-afa7-703cf72bf2db",
+            "sourceColumn": "TRANSFERTYPE",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PAYMENTS",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "cc32cd21-6d23-4965-8f0f-2419bde061e4",
+            "sourceColumn": "PAYMENTS",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ADJUSTMENTS",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "4ede99d8-df51-4617-9e90-446c55b9bcb7",
+            "sourceColumn": "ADJUSTMENTS",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "TRANSFERS",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "9086a426-2993-4aca-8647-99ffa94efbf6",
+            "sourceColumn": "TRANSFERS",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "OUTSTANDING",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "47c79bb0-030d-4350-ae1a-2874c6be9020",
+            "sourceColumn": "OUTSTANDING",
+            "sourceProviderType": "real",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ORGANIZATION_NAME",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "835eaddb-a70c-436c-9c0e-02986180f50f",
+            "sourceColumn": "ORGANIZATION_NAME",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PATIENT_INSURANCE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "49e5a18a-b6cb-4026-9419-0afab62a4260",
+            "sourceColumn": "PATIENT_INSURANCE",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PROVIDER_NAME",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "eb2bf348-fe8f-418f-8659-5f160fbd9bc0",
+            "sourceColumn": "PROVIDER_NAME",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PROVIDER_SPECIALITY",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c406729f-14f6-4ff5-81ca-f30db0a3ca6b",
+            "sourceColumn": "PROVIDER_SPECIALITY",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SUPERVISING_PROVIDER_NAME",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "af45317c-3fe1-46d0-9cb3-53b851670776",
+            "sourceColumn": "SUPERVISING_PROVIDER_NAME",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SUPERVISING_PROVIDER_SPECIALITY",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "154457de-676b-48de-8213-4470da27fc8a",
+            "sourceColumn": "SUPERVISING_PROVIDER_SPECIALITY",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "25eef962-4b9a-465f-86df-e62100cc0bef",
+        "partitions": [
+          {
+            "name": "synthe_gold_data stroke_claims_transactions",
+            "mode": "directQuery",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"uxrnomoyxvhedhuxx2uzr2674e-3bms75yvsdue3ovrk47pa56jie.datawarehouse.fabric.microsoft.com\", \"Warehouse\"),",
+                "    synthe_gold_data_stroke_claims_transactions = Source{[Schema=\"synthe_gold_data\",Item=\"stroke_claims_transactions\"]}[Data]",
+                "in",
+                "    synthe_gold_data_stroke_claims_transactions"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

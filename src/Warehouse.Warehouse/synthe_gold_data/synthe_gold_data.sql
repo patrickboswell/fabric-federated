@@ -1,0 +1,1 @@
+CREATE SCHEMA synthe_gold_data;

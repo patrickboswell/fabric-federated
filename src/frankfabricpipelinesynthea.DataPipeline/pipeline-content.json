@@ -1,0 +1,560 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DataWarehouseSource",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "DataWarehouseTable",
+              "typeProperties": {
+                "schema": "synthea",
+                "table": "stroke_claims_transactions"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "wh_synthea",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "6136bc27-d7a7-4734-9089-ac50a3084ec4",
+                    "endpoint": "uxrnomoyxvhedhuxx2uzr2674e-xqfpfbtyyueelh4ofzigu55h3u.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "86f20abc-c578-4508-9f8e-2e506a77a7dd"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "synthea_stroke_claims_transactions"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "testlakehouse",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "dc8fc39e-9f4f-4e72-932e-99c24b6e2980",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "ENCOUNTER_ID",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "ENCOUNTER_ID",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ED_FLAG",
+                  "type": "Boolean",
+                  "physicalType": "bit"
+                },
+                "sink": {
+                  "name": "ED_FLAG",
+                  "physicalType": "boolean"
+                }
+              },
+              {
+                "source": {
+                  "name": "LOS",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "LOS",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "START",
+                  "type": "DateTime",
+                  "physicalType": "datetime2",
+                  "precision": 6
+                },
+                "sink": {
+                  "name": "START",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "STOP",
+                  "type": "DateTime",
+                  "physicalType": "datetime2",
+                  "precision": 6
+                },
+                "sink": {
+                  "name": "STOP",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "TOTAL_CLAIM_COST",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "TOTAL_CLAIM_COST",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "PATIENT_ID",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "PATIENT_ID",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "AGE",
+                  "type": "Decimal",
+                  "physicalType": "decimal",
+                  "scale": 0,
+                  "precision": 23
+                },
+                "sink": {
+                  "name": "AGE",
+                  "physicalType": "decimal",
+                  "scale": 0,
+                  "precision": 23
+                }
+              },
+              {
+                "source": {
+                  "name": "INCOME_CAT",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "INCOME_CAT",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "TRANSACTION_ID",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "TRANSACTION_ID",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "TRANSACTION_TYPE",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "TRANSACTION_TYPE",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "CLAIMID",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "CLAIMID",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "CHARGEID",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "CHARGEID",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "TYPE",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "TYPE",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "AMOUNT",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "AMOUNT",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "METHOD",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "METHOD",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "FROMDATE",
+                  "type": "DateTime",
+                  "physicalType": "datetime2",
+                  "precision": 6
+                },
+                "sink": {
+                  "name": "FROMDATE",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "TODATE",
+                  "type": "DateTime",
+                  "physicalType": "datetime2",
+                  "precision": 6
+                },
+                "sink": {
+                  "name": "TODATE",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "PROCEDURECODE",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "PROCEDURECODE",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "MODIFIER1",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "MODIFIER1",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "MODIFIER2",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "MODIFIER2",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "DIAGNOSISREF1",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "DIAGNOSISREF1",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "DIAGNOSISREF2",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "DIAGNOSISREF2",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "DIAGNOSISREF3",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "DIAGNOSISREF3",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "DIAGNOSISREF4",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "DIAGNOSISREF4",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "UNITS",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "UNITS",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "DEPARTMENTID",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "DEPARTMENTID",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "NOTES",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "NOTES",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "UNITAMOUNT",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "UNITAMOUNT",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "TRANSFEROUTID",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "TRANSFEROUTID",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "TRANSFERTYPE",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "TRANSFERTYPE",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "PAYMENTS",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "PAYMENTS",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "ADJUSTMENTS",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "ADJUSTMENTS",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "TRANSFERS",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "TRANSFERS",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "OUTSTANDING",
+                  "type": "Single",
+                  "physicalType": "real"
+                },
+                "sink": {
+                  "name": "OUTSTANDING",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "ORGANIZATION_NAME",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "ORGANIZATION_NAME",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "PATIENT_INSURANCE",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "PATIENT_INSURANCE",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "PROVIDER_NAME",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "PROVIDER_NAME",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "PROVIDER_SPECIALITY",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "PROVIDER_SPECIALITY",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "SUPERVISING_PROVIDER_NAME",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "SUPERVISING_PROVIDER_NAME",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "SUPERVISING_PROVIDER_SPECIALITY",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                },
+                "sink": {
+                  "name": "SUPERVISING_PROVIDER_SPECIALITY",
+                  "physicalType": "string"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy_unk",
+        "dependsOn": []
+      }
+    ]
+  }
+}

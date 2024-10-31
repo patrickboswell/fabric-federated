@@ -1,0 +1,1 @@
+CREATE SCHEMA lung_cancer_new_measures;

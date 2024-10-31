@@ -1,0 +1,1930 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"nprqi_homebrew_project_records\",\"Table\",\"Errors in nprqi_homebrew_project_records\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.137.751.0 (24.10)"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "Errors in nprqi_homebrew_project_records",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "expression": [
+          "let",
+          "Source = nprqi_homebrew_project_records,",
+          "  #\"Detected Type Mismatches\" = let",
+          "    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Source, Table.ColumnsOfType(Source, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),",
+          "    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),",
+          "    fieldNames = Record.FieldNames(recordTypeFields),",
+          "    fieldTypes = List.Transform(Record.ToList(recordTypeFields), each [Type]),",
+          "    pairs = List.Transform(List.Positions(fieldNames), (i) => {fieldNames{i}, (v) => if v = null or Value.Is(v, fieldTypes{i}) then v else error [Message = \"The type of the value does not match the type of the column.\", Detail = v], fieldTypes{i}})",
+          "in",
+          "    Table.TransformColumns(Source, pairs),",
+          "  #\"Added Index\" = Table.AddIndexColumn(#\"Detected Type Mismatches\", \"Row Number\" ,1),",
+          "  #\"Kept Errors\" = Table.SelectRowsWithErrors(#\"Added Index\", {\"record\", \"export_datetime\", \"weight_recorded\", \"behavioral_health_concern\", \"respiratory_rate\", \"blood_pressure_obtained\", \"payor_source\", \"fever\", \"heart_rate\", \"temperature\", \"triage_time\", \"mental_status_score\", \"chief_complaint_other\", \"race\", \"respiratory_symptoms\", \"clinical_conditions\", \"triage_date\", \"another_clinical_condition\", \"vomiting\", \"seizure\", \"vitas_obtained\", \"temperature_value\", \"age\", \"triage_complete\", \"blunt_head_trauma\", \"pain_assessed\", \"esi\", \"clinical_inclusion_bundles_complete\", \"pre_hospital_meds_conf\", \"pain_level\", \"prehospital_fluids_medications_complete\", \"prehospital_meds\", \"state_territory\", \"mode_of_arrival\", \"medication_class\", \"patient_demographics_complete\", \"ethnicity\", \"chief_complaint\", \"record_id\", \"initial_vital_signs_complete\", \"gender\", \"mental_status_tool\", \"pulse_oximetry\", \"mental_status\", \"triage_time_label\"}),",
+          "  #\"Reordered Columns\" = Table.ReorderColumns(#\"Kept Errors\", {\"Row Number\", \"record\", \"export_datetime\", \"weight_recorded\", \"behavioral_health_concern\", \"respiratory_rate\", \"blood_pressure_obtained\", \"payor_source\", \"fever\", \"heart_rate\", \"temperature\", \"triage_time\", \"mental_status_score\", \"chief_complaint_other\", \"race\", \"respiratory_symptoms\", \"clinical_conditions\", \"triage_date\", \"another_clinical_condition\", \"vomiting\", \"seizure\", \"vitas_obtained\", \"temperature_value\", \"age\", \"triage_complete\", \"blunt_head_trauma\", \"pain_assessed\", \"esi\", \"clinical_inclusion_bundles_complete\", \"pre_hospital_meds_conf\", \"pain_level\", \"prehospital_fluids_medications_complete\", \"prehospital_meds\", \"state_territory\", \"mode_of_arrival\", \"medication_class\", \"patient_demographics_complete\", \"ethnicity\", \"chief_complaint\", \"record_id\", \"initial_vital_signs_complete\", \"gender\", \"mental_status_tool\", \"pulse_oximetry\", \"mental_status\", \"triage_time_label\"})",
+          "in",
+          "  #\"Reordered Columns\""
+        ],
+        "kind": "m",
+        "lineageTag": "2d364704-f61d-4f05-9ecc-eb67d1b7ef80",
+        "queryGroup": "Query Errors - 10/24/2024 9:44:09 AM"
+      }
+    ],
+    "queryGroups": [
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ],
+        "description": "Errors in queries that were loaded on 10/24/2024 9:44:09 AM.",
+        "folder": "Query Errors - 10/24/2024 9:44:09 AM"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "606a75e2-15b4-47cf-852a-e23c0ecc845e",
+        "fromColumn": "export_datetime",
+        "fromTable": "nprqi_homebrew_project_records",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_a5424331-d2e8-4504-b826-2b102b1cdad3"
+      },
+      {
+        "name": "AutoDetected_eb797b5e-755c-4f05-9ff4-f762e3fadac9",
+        "fromColumn": "triage_time_label",
+        "fromTable": "nprqi_homebrew_project_records",
+        "toColumn": "triage_time_label",
+        "toTable": "Table"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "nprqi_homebrew_project_records",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "record",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c6ee715f-d122-4478-a8f3-3235e9686644",
+            "sourceColumn": "record",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "export_datetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "35a27625-cbf5-473a-ba6c-9316585da4f3",
+            "sourceColumn": "export_datetime",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_a5424331-d2e8-4504-b826-2b102b1cdad3"
+                },
+                "isDefault": true,
+                "relationship": "606a75e2-15b4-47cf-852a-e23c0ecc845e"
+              }
+            ]
+          },
+          {
+            "name": "weight_recorded",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c8314430-70c6-4f02-913a-d387b4f77c36",
+            "sourceColumn": "weight_recorded",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "behavioral_health_concern",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9b4e6409-c15e-48c7-8294-3003b5c24e5f",
+            "sourceColumn": "behavioral_health_concern",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "respiratory_rate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8a4cf81f-bbcc-4085-86ef-6c71669b9ee1",
+            "sourceColumn": "respiratory_rate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "blood_pressure_obtained",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dca5253e-7e36-4d00-9cfe-8d63008aba15",
+            "sourceColumn": "blood_pressure_obtained",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payor_source",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cfd145eb-84e5-4be6-a22a-cde333bbdb27",
+            "sourceColumn": "payor_source",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fever",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4e502112-da5f-4738-a517-f630472b910f",
+            "sourceColumn": "fever",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "heart_rate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4418d10d-aaf2-4c0e-9b65-21461cec6178",
+            "sourceColumn": "heart_rate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "temperature",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "870bb8ef-8374-4d09-ace0-2cbe677a5b16",
+            "sourceColumn": "temperature",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "triage_time",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "__PBI_SemanticLinks",
+                "value": "[{\"LinkTarget\":{\"TableName\":\"nprqi_homebrew_project_records\",\"TableItemName\":\"Triage Time\",\"ObjectType\":4},\"LinkType\":\"UsedInGroup\"}]"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "379844c7-940d-469c-a691-78bf96bf5e52",
+            "sourceColumn": "triage_time",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mental_status_score",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "8ac779b1-e6df-4e4d-9a79-46e7aea9efc5",
+            "sourceColumn": "mental_status_score",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "chief_complaint_other",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0b460ed6-a006-410b-804c-b0344f164e3f",
+            "sourceColumn": "chief_complaint_other",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "race",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3871d808-d626-4540-bfe4-23ced00b2280",
+            "sourceColumn": "race",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "respiratory_symptoms",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "02283b10-918c-4f0e-be83-01ad73643537",
+            "sourceColumn": "respiratory_symptoms",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "clinical_conditions",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9a2f9d94-d0e7-4a32-b421-50bf5d3fb208",
+            "sourceColumn": "clinical_conditions",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "triage_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ece2ee22-537b-4ed2-bf5c-92405395bbf3",
+            "sourceColumn": "triage_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "another_clinical_condition",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0f8a7789-f557-43c1-8855-1aed2e1fea61",
+            "sourceColumn": "another_clinical_condition",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "vomiting",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7ad12e99-cfba-4b97-b714-25c79d3b644f",
+            "sourceColumn": "vomiting",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seizure",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "282e2c87-b3c4-4921-9586-4b66ba5d9e8d",
+            "sourceColumn": "seizure",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "vitas_obtained",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6b898c01-1306-446c-ba12-ebdc4bbf3421",
+            "sourceColumn": "vitas_obtained",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "temperature_value",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1bee9803-13b8-4740-b4bf-42d612c5b099",
+            "sourceColumn": "temperature_value",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "02f8e9c9-8d5c-408a-b8a1-f1ed0de677ea",
+            "sourceColumn": "age",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "triage_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "24aa776a-b59d-4251-9c39-2da0ecb70296",
+            "sourceColumn": "triage_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "blunt_head_trauma",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "af125874-da5f-4738-811e-79eb609b0088",
+            "sourceColumn": "blunt_head_trauma",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pain_assessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2eb7cf0c-1e2e-4688-88a1-ed8ab9cde247",
+            "sourceColumn": "pain_assessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "esi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "909cc72c-2c07-4d91-b4c0-0ec6ea14dc5d",
+            "sourceColumn": "esi",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "clinical_inclusion_bundles_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8dfad251-fd70-4aa9-8de0-723acb2d607d",
+            "sourceColumn": "clinical_inclusion_bundles_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pre_hospital_meds_conf",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "197bc530-4453-4fff-9435-bef51a5af8c8",
+            "sourceColumn": "pre_hospital_meds_conf",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pain_level",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3c98ec2c-2fc5-44b8-8582-cc6932b6d008",
+            "sourceColumn": "pain_level",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "prehospital_fluids_medications_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c2320a23-dd5a-4f12-a889-ad3c35105b55",
+            "sourceColumn": "prehospital_fluids_medications_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "prehospital_meds",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5b907f4f-52d9-4e32-866a-ddf6e480fa47",
+            "sourceColumn": "prehospital_meds",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "state_territory",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9dddd3ad-4828-4b22-98e1-c042e894643b",
+            "sourceColumn": "state_territory",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mode_of_arrival",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0beb8857-b0c2-4ad6-ae28-f7649b65ce11",
+            "sourceColumn": "mode_of_arrival",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "medication_class",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2e257cf5-de0d-4854-a6c7-d4e40884d36a",
+            "sourceColumn": "medication_class",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "patient_demographics_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7122245e-42a3-4a49-865f-aa0e1eb2124d",
+            "sourceColumn": "patient_demographics_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ethnicity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "572aacda-d273-4caa-a9b9-ce391c457d7e",
+            "sourceColumn": "ethnicity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "chief_complaint",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d03833b6-828e-4a5f-a00a-ae5ba540935e",
+            "sourceColumn": "chief_complaint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "initial_vital_signs_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "48ca7c14-2cc4-4caa-9ce7-6f0bb233687c",
+            "sourceColumn": "initial_vital_signs_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "gender",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "62d9da28-6368-41bc-8135-129bf6b1b21e",
+            "sourceColumn": "gender",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mental_status_tool",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "85a2bc70-31b4-4e73-84ad-bfe2ee11ea9c",
+            "sourceColumn": "mental_status_tool",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pulse_oximetry",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e5bbcb01-0fd6-45d6-8006-c110d41c53e0",
+            "sourceColumn": "pulse_oximetry",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mental_status",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "89a304bd-88ac-4769-aeea-d007d10b2de3",
+            "sourceColumn": "mental_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Triage Time",
+            "annotations": [
+              {
+                "name": "GroupingDesignState",
+                "value": "{\"Version\":0,\"Sources\":[{\"Name\":\"n\",\"Entity\":\"nprqi_homebrew_project_records\"}],\"GroupedColumns\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"triage_time\"}}],\"GroupItems\":[{\"DisplayName\":\"(Blank)\",\"BlankDefaultPlaceholder\":true},{\"DisplayName\":\"10-15\",\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"triage_time\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'10:56:00'\"}}],[{\"Literal\":{\"Value\":\"'11:32:00'\"}}],[{\"Literal\":{\"Value\":\"'13:46:00'\"}}],[{\"Literal\":{\"Value\":\"'13:59:00'\"}}],[{\"Literal\":{\"Value\":\"'14:19:00'\"}}],[{\"Literal\":{\"Value\":\"'14:21:00'\"}}]]}}},{\"DisplayName\":\"15+\",\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"triage_time\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'21:26:00'\"}}]]}}},{\"DisplayName\":\"5-10\",\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"triage_time\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'05:50:00'\"}}],[{\"Literal\":{\"Value\":\"'07:59:00'\"}}],[{\"Literal\":{\"Value\":\"'09:09:00'\"}}]]}}},{\"DisplayName\":\"Under 5\",\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"triage_time\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'04:32:00'\"}}]]}}}]}"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "SWITCH(",
+              "\tTRUE,",
+              "\tISBLANK('nprqi_homebrew_project_records'[triage_time]),",
+              "\t\"(Blank)\",",
+              "\t'nprqi_homebrew_project_records'[triage_time] IN {\"10:56:00\",",
+              "\t\t\"11:32:00\",",
+              "\t\t\"13:46:00\",",
+              "\t\t\"13:59:00\",",
+              "\t\t\"14:19:00\",",
+              "\t\t\"14:21:00\"},",
+              "\t\"10-15\",",
+              "\t'nprqi_homebrew_project_records'[triage_time] IN {\"21:26:00\"},",
+              "\t\"15+\",",
+              "\t'nprqi_homebrew_project_records'[triage_time] IN {\"05:50:00\",",
+              "\t\t\"07:59:00\",",
+              "\t\t\"09:09:00\"},",
+              "\t\"5-10\",",
+              "\t'nprqi_homebrew_project_records'[triage_time] IN {\"04:32:00\"},",
+              "\t\"Under 5\",",
+              "\t'nprqi_homebrew_project_records'[triage_time]",
+              ")"
+            ],
+            "extendedProperties": [
+              {
+                "name": "GroupingMetadata",
+                "type": "json",
+                "value": {
+                  "groupedColumns": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "nprqi_homebrew_project_records"
+                          }
+                        },
+                        "Property": "triage_time"
+                      }
+                    }
+                  ],
+                  "version": 0
+                }
+              }
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "4bdb1880-4616-42f9-8760-6dd4bedce4a9",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "triage_time_label",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "82dcce58-b4a2-43a8-92f8-d1a58c01dd62",
+            "sourceColumn": "triage_time_label",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "tertiary_discharge_diagnosis_2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "587078ec-70db-4feb-a4d9-cc6c8e4140ad",
+            "sourceColumn": "tertiary_discharge_diagnosis_2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "screenings",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9c494a78-9e39-4359-af51-fe0b552c35c7",
+            "sourceColumn": "screenings",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "suicide_risk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "47d2a01f-e4bd-4d1a-89ec-48f34e5cdac4",
+            "sourceColumn": "suicide_risk",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "bp_reassessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "459b5f6d-5aae-439c-b9bf-02406f4f9914",
+            "sourceColumn": "bp_reassessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "secondary_discharge_diagnosis",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f707afdb-2b9a-4315-83ea-2effc8f45f1a",
+            "sourceColumn": "secondary_discharge_diagnosis",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "type_class_fluid_meds",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a755b8bc-ec36-4158-9925-46089ed82169",
+            "sourceColumn": "type_class_fluid_meds",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "antihistamines",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "43a96bff-0e32-4701-abe0-4fa867d70594",
+            "sourceColumn": "antihistamines",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fluids",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ddb5d26c-0469-43b7-999e-7ca0551009c2",
+            "sourceColumn": "fluids",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "gas_used",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "371f4237-57a7-4333-97e2-5ea9e0af1e16",
+            "sourceColumn": "gas_used",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ss_le_involved",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dfd3c684-7175-469b-b78e-e4038ba29f74",
+            "sourceColumn": "ss_le_involved",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resuscitation_meds",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c79e3085-60e0-4edb-adf9-ce0335ba5e9a",
+            "sourceColumn": "resuscitation_meds",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "disposition_time",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ac0f267c-d05c-4c0c-bbec-1e2537da0537",
+            "sourceColumn": "disposition_time",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "final_disposition",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a9b30f41-c948-43cb-96ce-d3479c947071",
+            "sourceColumn": "final_disposition",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "antipsychotics",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0ffc65b0-335f-40c3-b827-315961ae0041",
+            "sourceColumn": "antipsychotics",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "bronchodilators",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1ae28905-465f-4d2a-9533-87057d51fe15",
+            "sourceColumn": "bronchodilators",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "vaccines",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5ca2e1f7-6a0c-4041-bd79-9873c0c62d85",
+            "sourceColumn": "vaccines",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "temp_reassessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "01c6de17-a840-48be-b2e0-0e93d97b6074",
+            "sourceColumn": "temp_reassessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "analgesics",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "705f0fa3-9362-4383-b76b-9ec985783321",
+            "sourceColumn": "analgesics",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "other_meds",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "21640348-9563-47ac-8814-e88b7ffa2e15",
+            "sourceColumn": "other_meds",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pain_reassessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d904226d-acdd-4304-a8f8-e8a44a067313",
+            "sourceColumn": "pain_reassessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "structured_suicide_screen",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e867d265-0a60-4c82-afcc-07c31a8135d2",
+            "sourceColumn": "structured_suicide_screen",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "antiemetics",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9be56879-9b1c-47f1-b09e-6f873e8fa045",
+            "sourceColumn": "antiemetics",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "intubation_meds",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9d572db9-2fc4-45a1-a8b0-af11f98f8592",
+            "sourceColumn": "intubation_meds",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "steroids",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a382268e-884b-42b8-b6dd-680537e32bf9",
+            "sourceColumn": "steroids",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ed_fluids_and_medication_confirmation_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5330008d-7c74-4b19-b4a0-8b2ba1ffb1c0",
+            "sourceColumn": "ed_fluids_and_medication_confirmation_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "vitals_reassessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bf878597-1c7d-4072-9d1c-ca810dc53ca0",
+            "sourceColumn": "vitals_reassessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "primary_discharge_diagnosis",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "59cf5a11-3d99-4e67-badb-7bbd18805062",
+            "sourceColumn": "primary_discharge_diagnosis",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "receiving_facility",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "45dc9268-e865-4a02-b645-bbb7781ce126",
+            "sourceColumn": "receiving_facility",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "gas_value_reassessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "34294808-ab25-4061-af43-d913cd434f2e",
+            "sourceColumn": "gas_value_reassessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pain_reassessed_level",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f725da8d-c4dc-4248-8ff6-27d713a402f0",
+            "sourceColumn": "pain_reassessed_level",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "disposition_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7781bae9-7832-47cc-9225-362cb1524070",
+            "sourceColumn": "disposition_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "safety_screenings_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9c97ed36-ba1c-4765-850a-73b6b5f84ca2",
+            "sourceColumn": "safety_screenings_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ed_meds",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "975571f2-ff75-4691-bed1-90b00a655a0c",
+            "sourceColumn": "ed_meds",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pulseox_reassessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6d467576-4dc1-481d-b836-828f9cf5acfc",
+            "sourceColumn": "pulseox_reassessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "vital_sign_reassessment_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3ba09df9-b566-4489-ac8c-114c6c9cd590",
+            "sourceColumn": "vital_sign_reassessment_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "high_risk_suicide",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c5f65f12-73ba-4f68-b2c2-cf00d1f3fe1b",
+            "sourceColumn": "high_risk_suicide",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "antipyretics",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b6cccdd3-cb1f-4316-a702-676cfef58e3c",
+            "sourceColumn": "antipyretics",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ms_reassessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "535fdb11-11de-4eef-be09-31eddd808392",
+            "sourceColumn": "ms_reassessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "discharge_diagnosis_complete",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cf29a71c-ca52-4f4a-b413-a33c28458d39",
+            "sourceColumn": "discharge_diagnosis_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "disposition_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9ca6abcd-29ec-4c8c-859c-afff14057fa4",
+            "sourceColumn": "disposition_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "anticonvulsants",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f0c50d82-8e5d-4f22-81e4-8d0121670042",
+            "sourceColumn": "anticonvulsants",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "antimicrobials",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0e6bcd31-8eab-4ab6-ae51-00961ecbd44f",
+            "sourceColumn": "antimicrobials",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "route",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3b1cb219-22c9-486c-9652-4b71ed8ac46e",
+            "sourceColumn": "route",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "med_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "713e14f1-c6d1-4a4c-afd7-1b4c09a6d1fa",
+            "sourceColumn": "med_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "time_med_admin",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a1743c56-01a1-45ad-a962-90e5f9316b7b",
+            "sourceColumn": "time_med_admin",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "hr_reassessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3a14612d-ac88-4ced-90dc-4120d3085f9e",
+            "sourceColumn": "hr_reassessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rr_reassessed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "acf152e4-743b-476b-8714-0114523dc4e0",
+            "sourceColumn": "rr_reassessed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "harm_violence_screen",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6c4d0fba-59f7-4dd6-be61-64216391f901",
+            "sourceColumn": "harm_violence_screen",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "screenings_performed",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6792325d-45fb-42be-bd69-05bd8a181daf",
+            "sourceColumn": "screenings_performed",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "ae720f4f-0a14-496f-bd4f-e59a3967d569",
+        "measures": [
+          {
+            "name": "Average Age",
+            "expression": "average(nprqi_homebrew_project_records[age])",
+            "formatString": "0",
+            "lineageTag": "b034be93-e7ba-465a-afe1-2887965066cd"
+          },
+          {
+            "name": "Average Mental Status Score",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "average(nprqi_homebrew_project_records[mental_status_score])",
+            "lineageTag": "a70f9f90-8ae2-4a32-a5e1-6c0d1a7acf70"
+          },
+          {
+            "name": "Record Count",
+            "expression": "DISTINCTCOUNT(nprqi_homebrew_project_records[record])",
+            "formatString": "0",
+            "lineageTag": "1082aad4-c684-4abc-ac79-38136ed641a2"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "nprqi_homebrew_project_records",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"uxrnomoyxvhedhuxx2uzr2674e-3bms75yvsdue3ovrk47pa56jie.datawarehouse.fabric.microsoft.com\", \"NPRQI\"),",
+                "    dbo_nprqi_homebrew_project_records = Source{[Schema=\"dbo\",Item=\"nprqi_homebrew_project_records\"]}[Data],",
+                "    #\"Pivoted Column\" = Table.Pivot(dbo_nprqi_homebrew_project_records, List.Distinct(dbo_nprqi_homebrew_project_records[field_name]), \"field_name\", \"value\"),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Pivoted Column\",{{\"triage_time\", type duration}, {\"age\", Int64.Type}, {\"mental_status_score\", Int64.Type}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Changed Type\",{{\"triage_time\", type text}}),",
+                "    #\"Removed Blank Rows\" = Table.SelectRows(#\"Changed Type1\", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {\"\", null}))),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Blank Rows\", each ([race] <> null)),",
+                "    #\"Added Conditional Column\" = Table.AddColumn(#\"Filtered Rows\", \"triage_time_label\", each if [triage_time] = \"21:26:00\" then \"15+\" else if [triage_time] = \"04:32:00\" then \"0-4.9\" else if [triage_time] = \"05:50:00\" then \"5-10.9\" else if [triage_time] = \"07:59:00\" then \"5-10.9\" else if [triage_time] = \"09:09:00\" then \"5-10.9\" else \"10-14.9\", type text),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Added Conditional Column\",\"5-10.9\",\"5-9.9\",Replacer.ReplaceText,{\"triage_time_label\"}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Replaced Value\",{\"record_id\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DateTableTemplate_90272d81-8200-4442-a119-abd88595f771",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "122a99b5-d96a-4e60-bb3a-7a1b79502206",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isHidden": true,
+            "lineageTag": "be6ee452-0232-43b5-942c-1bb384140c22",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isHidden": true,
+            "lineageTag": "3b30f803-f74d-422d-a52a-c33ab7858c4f",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isHidden": true,
+            "lineageTag": "c535c1fa-bae6-41ed-a091-3cd7a8063fa7",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isHidden": true,
+            "lineageTag": "f85e217a-b70d-4229-b1a5-caa7ee1c70e7",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isHidden": true,
+            "lineageTag": "3244dbd7-fba7-4740-941e-014af24acb26",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isHidden": true,
+            "lineageTag": "ec52f7ea-f609-4339-8b4d-6e9f0fdf8b47",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "c9947026-b910-4ea4-ba2a-be8716de0a7e",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "10ad71dc-f70e-44cb-a92a-96eea3cc8d73",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "1b03c518-a95b-4b25-bea3-72450c14e4c0",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "9e4b548f-88b5-4f80-a8b7-c41f9ad15001",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "85908871-e8c7-4f35-b297-2f53ebfc11fd"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "3cd9fbca-509e-425a-a74c-88f0edc368c8",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_90272d81-8200-4442-a119-abd88595f771",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "LocalDateTable_a5424331-d2e8-4504-b826-2b102b1cdad3",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "31f6a7c5-e166-4397-8eb3-0aec4367522a",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isHidden": true,
+            "lineageTag": "ec4d4411-563f-43d9-b8bd-8b1f4d5e1104",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isHidden": true,
+            "lineageTag": "cae95a55-3704-4fd4-9a39-4b87aaefeb36",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isHidden": true,
+            "lineageTag": "bfe2f13a-94f9-49d1-a7cb-5486f52f9f73",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isHidden": true,
+            "lineageTag": "6bc8c33c-4db5-424a-9f2c-6e96aad574a9",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isHidden": true,
+            "lineageTag": "1b3eb00d-cef6-4659-a283-8d0038c9d410",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isHidden": true,
+            "lineageTag": "5329d895-42a0-4407-b0e5-d9c5d539e096",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "b13cd06f-c315-4bae-8a6b-10b37c451ecc",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "d13fae48-dafd-4de1-9bd0-408a6c5357e8",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "8ab713ed-9138-4ee5-9d17-a44fe30a970d",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "448bc456-3a8e-4c98-8e22-f5d2d61a9fab",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "08c267f6-3dee-4917-b0c6-d0456a0eee17"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "3206f1f2-d69e-479d-af7a-8337f8c93365",
+        "partitions": [
+          {
+            "name": "LocalDateTable_a5424331-d2e8-4504-b826-2b102b1cdad3",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('nprqi_homebrew_project_records'[export_datetime])), 1, 1), Date(Year(MAX('nprqi_homebrew_project_records'[export_datetime])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "Table",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "triage_time_label",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "222d5d0c-9799-4ece-89bd-01ae99debd75",
+            "sortByColumn": "triage_time_order",
+            "sourceColumn": "triage_time_label",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "triage_time_order",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4899c3ab-e11f-4b5e-8458-fa72f5f19a8b",
+            "sourceColumn": "triage_time_order",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "44f64037-191e-44cb-8acd-fe7fbffec9ed",
+        "partitions": [
+          {
+            "name": "Table",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WMtA10bNU0lEyVIrViVYy1TU0AHONwFxDA11DiLQxhG+qDWSbKMXGAgA=\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [triage_time_label = _t, triage_time_order = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"triage_time_label\", type text}, {\"triage_time_order\", Int64.Type}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type\",\"5-10.9\",\"5-9.9\",Replacer.ReplaceText,{\"triage_time_label\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

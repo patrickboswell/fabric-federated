@@ -1,0 +1,1 @@
+CREATE SCHEMA synthea_cdc;

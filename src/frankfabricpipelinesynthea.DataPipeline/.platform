@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "frankfabricpipelinesynthea",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2376b238-8744-4ac2-9697-7cd7e29d0240"
+  }
+}
